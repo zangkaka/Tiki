@@ -14,7 +14,9 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
+import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
+import com.squareup.picasso.Picasso;
 import com.zang.tiki.R;
 import com.zang.tiki.model.BannerDto;
 import com.zang.tiki.model.Datum;
@@ -46,6 +48,7 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         sliderLayout = view.findViewById(R.id.daimajia_slider_image);
+
         homeViewModel.getBanner().observe(getViewLifecycleOwner(), new Observer<BannerDto>() {
             @Override
             public void onChanged(BannerDto bannerDto) {
@@ -73,12 +76,11 @@ public class HomeFragment extends Fragment {
         }
 
         for (String name: bannerMap.values()){
-            TextSliderView textSliderView = new TextSliderView(getContext());
-            textSliderView
-                    .image(bannerMap.get(name))
-//                    .image("https://salt.tikicdn.com/cache/w750/ts/banner/ab/b9/e2/b8db4535cd4da6d9f1acc2267cde8c12.jpg")
-                    .setScaleType(BaseSliderView.ScaleType.Fit);
-            sliderLayout.addSlider(textSliderView);
+            DefaultSliderView defaultSliderView = new DefaultSliderView(getContext());
+            Picasso picasso = Picasso.with(getContext());
+            defaultSliderView.setPicasso(picasso);
+            defaultSliderView.image(name);
+            sliderLayout.addSlider(defaultSliderView);
         }
     }
 }
