@@ -13,22 +13,13 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.daimajia.slider.library.SliderLayout;
-import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
-import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.squareup.picasso.Picasso;
 import com.zang.tiki.R;
 import com.zang.tiki.model.BannerDto;
 import com.zang.tiki.model.Datum;
-import com.zang.tiki.retrofit.ITiKiAPI;
-import com.zang.tiki.until.APIConstance;
 
 import java.util.HashMap;
-
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
 
 public class HomeFragment extends Fragment {
 
